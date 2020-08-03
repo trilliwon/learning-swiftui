@@ -11,63 +11,64 @@ import Combine
 import UIKit
 
 class ImageService {
-    static func fetchImage(path: String) -> AnyPublisher<UIImage?, Never> {
-        return URLSession.shared.dataTaskPublisher(for: URL(fileURLWithPath: path))
-            .tryMap { (data, response) -> UIImage? in
-                return UIImage(data: data)
-        }.catch { error in
-            return Just(nil)
-        }
-        .eraseToAnyPublisher()
-    }
+	static func fetchImage(path: String) -> AnyPublisher<UIImage?, Never> {
+		URLSession.shared.dataTaskPublisher(for: URL(fileURLWithPath: path))
+			.tryMap { (data, response) -> UIImage? in
+				UIImage(data: data)
+		}.catch { error in
+			Just(nil)
+		}
+		.eraseToAnyPublisher()
+	}
 }
 
 class ImageLoaderCache {
-    static let shared = ImageLoaderCache()
 
-    var loaders: NSCache<NSString, ImageLoader> = NSCache()
+	static let shared = ImageLoaderCache()
 
-    func loaderFor(path: String) -> ImageLoader {
-        let key = NSString(string: "\(path)")
-        if let loader = loaders.object(forKey: key) {
-            return loader
-        } else {
-            let loader = ImageLoader(path: path)
-            loaders.setObject(loader, forKey: key)
-            return loader
-        }
-    }
+	var loaders: NSCache<NSString, ImageLoader> = NSCache()
+
+	func loaderFor(path: String) -> ImageLoader {
+		let key = NSString(string: "\(path)")
+		if let loader = loaders.object(forKey: key) {
+			return loader
+		} else {
+			let loader = ImageLoader(path: path)
+			loaders.setObject(loader, forKey: key)
+			return loader
+		}
+	}
 }
 
 final class ImageLoader: ObservableObject {
-    let path: String?
+	let path: String?
 
-    var objectWillChange: AnyPublisher<UIImage?, Never> = Publishers.Sequence<[UIImage?], Never>(sequence: []).eraseToAnyPublisher()
+	var objectWillChange: AnyPublisher<UIImage?, Never> = Publishers.Sequence<[UIImage?], Never>(sequence: []).eraseToAnyPublisher()
 
-    @Published var image: UIImage? = nil
+	@Published var image: UIImage? = nil
 
-    var cancellable: AnyCancellable?
+	var cancellable: AnyCancellable?
 
-    init(path: String?) {
-        self.path = path
+	init(path: String?) {
+		self.path = path
 
-        self.objectWillChange = $image.handleEvents(receiveSubscription: { [weak self] sub in
-            self?.loadImage()
-        }, receiveCancel: { [weak self] in
-            self?.cancellable?.cancel()
-        }).eraseToAnyPublisher()
-    }
+		self.objectWillChange = $image.handleEvents(receiveSubscription: { [weak self] sub in
+			self?.loadImage()
+			}, receiveCancel: { [weak self] in
+				self?.cancellable?.cancel()
+		}).eraseToAnyPublisher()
+	}
 
-    private func loadImage() {
-        guard let path = path, image == nil else {
-            return
-        }
-        cancellable = ImageService.fetchImage(path: path)
-            .receive(on: DispatchQueue.main)
-            .assign(to: \ImageLoader.image, on: self)
-    }
+	private func loadImage() {
+		guard let path = path, image == nil else {
+			return
+		}
+		cancellable = ImageService.fetchImage(path: path)
+			.receive(on: DispatchQueue.main)
+			.assign(to: \ImageLoader.image, on: self)
+	}
 
-    deinit {
-        cancellable?.cancel()
-    }
+	deinit {
+		cancellable?.cancel()
+	}
 }

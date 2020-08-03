@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		E35E5553234B09EC008E7106 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35E5551234B09EC008E7106 /* LaunchScreen.storyboard */; };
 		E35E555E234B09EC008E7106 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35E555D234B09EC008E7106 /* MovieTests.swift */; };
 		E35E5569234B09EC008E7106 /* MovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35E5568234B09EC008E7106 /* MovieUITests.swift */; };
+		E3A69CAD24D7C0DB0000E4E9 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E3A69CAC24D7C0DB0000E4E9 /* Moya */; };
+		E3A69CB024D7C11E0000E4E9 /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A69CAF24D7C11E0000E4E9 /* BaseProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 		E35E5564234B09EC008E7106 /* MovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35E5568234B09EC008E7106 /* MovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUITests.swift; sourceTree = "<group>"; };
 		E35E556A234B09EC008E7106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3A69CAF24D7C11E0000E4E9 /* BaseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A69CAD24D7C0DB0000E4E9 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +105,7 @@
 		E35E5542234B09EA008E7106 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
+				E3A69CAE24D7C1070000E4E9 /* Networking */,
 				E35E5543234B09EA008E7106 /* AppDelegate.swift */,
 				E35E5545234B09EA008E7106 /* SceneDelegate.swift */,
 				E35E554A234B09EA008E7106 /* ContentView.swift */,
@@ -139,6 +144,14 @@
 			path = MovieUITests;
 			sourceTree = "<group>";
 		};
+		E3A69CAE24D7C1070000E4E9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E3A69CAF24D7C11E0000E4E9 /* BaseProvider.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,6 +168,9 @@
 			dependencies = (
 			);
 			name = Movie;
+			packageProductDependencies = (
+				E3A69CAC24D7C0DB0000E4E9 /* Moya */,
+			);
 			productName = Movie;
 			productReference = E35E5540234B09EA008E7106 /* Movie.app */;
 			productType = "com.apple.product-type.application";
@@ -227,6 +243,9 @@
 				Base,
 			);
 			mainGroup = E35E5537234B09EA008E7106;
+			packageReferences = (
+				E3A69CAB24D7C0DB0000E4E9 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = E35E5541234B09EA008E7106 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,6 +293,7 @@
 				E35E5549234B09EA008E7106 /* Movie.xcdatamodeld in Sources */,
 				E35E554B234B09EA008E7106 /* ContentView.swift in Sources */,
 				E35E5546234B09EA008E7106 /* SceneDelegate.swift in Sources */,
+				E3A69CB024D7C11E0000E4E9 /* BaseProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +618,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E3A69CAB24D7C0DB0000E4E9 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E3A69CAC24D7C0DB0000E4E9 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3A69CAB24D7C0DB0000E4E9 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E35E5547234B09EA008E7106 /* Movie.xcdatamodeld */ = {

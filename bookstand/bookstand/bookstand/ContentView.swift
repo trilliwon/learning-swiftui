@@ -23,7 +23,7 @@ struct ContentView: View {
                 }
                 .tag(0)
 
-            Text("Search")
+            SearchView()
                 .font(.title)
                 .tabItem {
                     VStack {

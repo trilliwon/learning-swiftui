@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BookRow: View {
-    var book: Book
+    var book: Book = books
 
     var body: some View {
         HStack(alignment: .top) {
@@ -48,7 +48,7 @@ struct BookRow: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            BookRow(book: sampleBook!)
+            BookRow()
         }
     }
 }

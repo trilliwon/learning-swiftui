@@ -28,7 +28,7 @@ struct BookCoverImage: View {
                     .foregroundColor(.gray)
             }
         }.onAppear {
-            BookSearchAPI.shared.request<Book.self>(endpoint: BookSearchAPI.Endpoint.search(.title))
+//            BookSearchAPI.shared.request<Book.self>(endpoint: BookSearchAPI.Endpoint.search(.title))
         }
     }
 }
