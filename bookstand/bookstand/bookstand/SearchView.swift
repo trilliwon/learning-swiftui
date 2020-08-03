@@ -10,20 +10,17 @@ import SwiftUI
 
 struct SearchView: View {
 
-	var samples = ["Benz", "BMW", "Poche"]
-
 	@State var searchText: String = ""
 
 	var body: some View {
 		VStack {
 			SearchBar(text: $searchText)
 			List {
-				ForEach(self.samples, id: \.self) { car in
-					Text(car)
+				ForEach(books, id: \.title) { book in
+					BookRow(book: book, imageLoader: ImageLoaderCache.shared.loaderFor(path: book.thumbnail))
 				}
 			}
 			.navigationBarTitle(Text("Search"))
-			.resignKeyboardOnDragGesture()
 		}
 	}
 }

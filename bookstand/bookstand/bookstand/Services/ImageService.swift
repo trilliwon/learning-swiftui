@@ -10,18 +10,6 @@ import SwiftUI
 import Combine
 import UIKit
 
-class ImageService {
-	static func fetchImage(path: String) -> AnyPublisher<UIImage?, Never> {
-		URLSession.shared.dataTaskPublisher(for: URL(fileURLWithPath: path))
-			.tryMap { (data, response) -> UIImage? in
-				UIImage(data: data)
-		}.catch { error in
-			Just(nil)
-		}
-		.eraseToAnyPublisher()
-	}
-}
-
 class ImageLoaderCache {
 
 	static let shared = ImageLoaderCache()
@@ -41,34 +29,45 @@ class ImageLoaderCache {
 }
 
 final class ImageLoader: ObservableObject {
-	let path: String?
+	let path: String
 
 	var objectWillChange: AnyPublisher<UIImage?, Never> = Publishers.Sequence<[UIImage?], Never>(sequence: []).eraseToAnyPublisher()
 
-	@Published var image: UIImage? = nil
+	@Published var image: UIImage?
 
 	var cancellable: AnyCancellable?
 
-	init(path: String?) {
+	init(path: String) {
 		self.path = path
-
-		self.objectWillChange = $image.handleEvents(receiveSubscription: { [weak self] sub in
-			self?.loadImage()
+		objectWillChange = $image
+			.handleEvents(receiveSubscription: { [weak self] sub in
+				self?.loadImage()
 			}, receiveCancel: { [weak self] in
 				self?.cancellable?.cancel()
-		}).eraseToAnyPublisher()
+			})
+			.eraseToAnyPublisher()
 	}
 
 	private func loadImage() {
-		guard let path = path, image == nil else {
+		guard image == nil, let url = URL(string: path) else {
 			return
 		}
-		cancellable = ImageService.fetchImage(path: path)
+		cancellable = fetchImage(for: url)
 			.receive(on: DispatchQueue.main)
 			.assign(to: \ImageLoader.image, on: self)
 	}
 
 	deinit {
 		cancellable?.cancel()
+	}
+
+	func fetchImage(for url: URL) -> AnyPublisher<UIImage?, Never> {
+		URLSession.shared
+			.dataTaskPublisher(for: url)
+			.map({ $0.data })
+			.receive(on: RunLoop.main)
+			.map({ UIImage(data: $0) })
+			.replaceError(with: nil)
+			.eraseToAnyPublisher()
 	}
 }
