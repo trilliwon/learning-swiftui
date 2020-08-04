@@ -17,7 +17,9 @@ struct SearchView: View {
 			SearchBar(text: $searchText)
 			List {
 				ForEach(books, id: \.title) { book in
-					BookRow(book: book, imageLoader: ImageLoaderCache.shared.loaderFor(path: book.thumbnail))
+					BookRow(
+						book: book,
+						imageLoader: ImageLoaderCache.shared.loaderFor(path: book.thumbnail))
 				}
 			}
 			.navigationBarTitle(Text("Search"))
