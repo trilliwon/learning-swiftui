@@ -30,7 +30,7 @@ struct BookSearchView: View {
                 .navigationBarTitle(Text("Search"))
             }
 
-            if viewModel.query.isEmpty {
+            if viewModel.books.isEmpty {
                 Text("Search Any Books 📚")
             }
         }

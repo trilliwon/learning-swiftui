@@ -20,7 +20,6 @@ class BookSearchViewModel: ObservableObject {
     init() {
         $query
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-            .receive(on: DispatchQueue.global())
             .flatMap { [unowned self] query -> AnyPublisher<[Book], Never> in
                 if query.isEmpty {
                     return Result.Publisher([]).eraseToAnyPublisher()

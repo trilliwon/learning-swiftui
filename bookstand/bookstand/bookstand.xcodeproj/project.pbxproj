@@ -25,7 +25,6 @@
 		E3C1E9F8233CD18F00FC12CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C1E9F7233CD18F00FC12CD /* Preview Assets.xcassets */; };
 		E3C1E9FB233CD18F00FC12CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C1E9F9233CD18F00FC12CD /* LaunchScreen.storyboard */; };
 		E3C1EA06233CD19000FC12CD /* bookstandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C1EA05233CD19000FC12CD /* bookstandTests.swift */; };
-		E3C1EA11233CD19000FC12CD /* bookstandUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C1EA10233CD19000FC12CD /* bookstandUITests.swift */; };
 		E3C1EA1F233CD42500FC12CD /* BookSearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C1EA1E233CD42500FC12CD /* BookSearchProvider.swift */; };
 		E3C1EA21233CD62B00FC12CD /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C1EA20233CD62B00FC12CD /* ImageService.swift */; };
 		E3C1EA23233CD86700FC12CD /* BookRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C1EA22233CD86700FC12CD /* BookRow.swift */; };
@@ -35,13 +34,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		E3C1EA02233CD19000FC12CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3C1E9E0233CD18D00FC12CD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3C1E9E7233CD18D00FC12CD;
-			remoteInfo = bookstand;
-		};
-		E3C1EA0D233CD19000FC12CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E3C1E9E0233CD18D00FC12CD /* Project object */;
 			proxyType = 1;
@@ -73,9 +65,6 @@
 		E3C1EA01233CD19000FC12CD /* bookstandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookstandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C1EA05233CD19000FC12CD /* bookstandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookstandTests.swift; sourceTree = "<group>"; };
 		E3C1EA07233CD19000FC12CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3C1EA0C233CD19000FC12CD /* bookstandUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookstandUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3C1EA10233CD19000FC12CD /* bookstandUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookstandUITests.swift; sourceTree = "<group>"; };
-		E3C1EA12233CD19000FC12CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3C1EA1E233CD42500FC12CD /* BookSearchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchProvider.swift; sourceTree = "<group>"; };
 		E3C1EA20233CD62B00FC12CD /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		E3C1EA22233CD86700FC12CD /* BookRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRow.swift; sourceTree = "<group>"; };
@@ -92,13 +81,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E3C1E9FE233CD19000FC12CD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3C1EA09233CD19000FC12CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -177,7 +159,6 @@
 			children = (
 				E3C1E9EA233CD18D00FC12CD /* bookstand */,
 				E3C1EA04233CD19000FC12CD /* bookstandTests */,
-				E3C1EA0F233CD19000FC12CD /* bookstandUITests */,
 				E3C1E9E9233CD18D00FC12CD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -187,7 +168,6 @@
 			children = (
 				E3C1E9E8233CD18D00FC12CD /* bookstand.app */,
 				E3C1EA01233CD19000FC12CD /* bookstandTests.xctest */,
-				E3C1EA0C233CD19000FC12CD /* bookstandUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,15 +211,6 @@
 			path = bookstandTests;
 			sourceTree = "<group>";
 		};
-		E3C1EA0F233CD19000FC12CD /* bookstandUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E3C1EA10233CD19000FC12CD /* bookstandUITests.swift */,
-				E3C1EA12233CD19000FC12CD /* Info.plist */,
-			);
-			path = bookstandUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -278,24 +249,6 @@
 			productReference = E3C1EA01233CD19000FC12CD /* bookstandTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E3C1EA0B233CD19000FC12CD /* bookstandUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3C1EA1B233CD19000FC12CD /* Build configuration list for PBXNativeTarget "bookstandUITests" */;
-			buildPhases = (
-				E3C1EA08233CD19000FC12CD /* Sources */,
-				E3C1EA09233CD19000FC12CD /* Frameworks */,
-				E3C1EA0A233CD19000FC12CD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E3C1EA0E233CD19000FC12CD /* PBXTargetDependency */,
-			);
-			name = bookstandUITests;
-			productName = bookstandUITests;
-			productReference = E3C1EA0C233CD19000FC12CD /* bookstandUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -310,10 +263,6 @@
 						CreatedOnToolsVersion = 11.0;
 					};
 					E3C1EA00233CD19000FC12CD = {
-						CreatedOnToolsVersion = 11.0;
-						TestTargetID = E3C1E9E7233CD18D00FC12CD;
-					};
-					E3C1EA0B233CD19000FC12CD = {
 						CreatedOnToolsVersion = 11.0;
 						TestTargetID = E3C1E9E7233CD18D00FC12CD;
 					};
@@ -334,7 +283,6 @@
 			targets = (
 				E3C1E9E7233CD18D00FC12CD /* bookstand */,
 				E3C1EA00233CD19000FC12CD /* bookstandTests */,
-				E3C1EA0B233CD19000FC12CD /* bookstandUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -352,13 +300,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E3C1E9FF233CD19000FC12CD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3C1EA0A233CD19000FC12CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -401,14 +342,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3C1EA08233CD19000FC12CD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E3C1EA11233CD19000FC12CD /* bookstandUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -416,11 +349,6 @@
 			isa = PBXTargetDependency;
 			target = E3C1E9E7233CD18D00FC12CD /* bookstand */;
 			targetProxy = E3C1EA02233CD19000FC12CD /* PBXContainerItemProxy */;
-		};
-		E3C1EA0E233CD19000FC12CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3C1E9E7233CD18D00FC12CD /* bookstand */;
-			targetProxy = E3C1EA0D233CD19000FC12CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -634,46 +562,6 @@
 			};
 			name = Release;
 		};
-		E3C1EA1C233CD19000FC12CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J2WX5LW4CC;
-				INFOPLIST_FILE = bookstandUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trilliwon.bookstandUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = bookstand;
-			};
-			name = Debug;
-		};
-		E3C1EA1D233CD19000FC12CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J2WX5LW4CC;
-				INFOPLIST_FILE = bookstandUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trilliwon.bookstandUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = bookstand;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -700,15 +588,6 @@
 			buildConfigurations = (
 				E3C1EA19233CD19000FC12CD /* Debug */,
 				E3C1EA1A233CD19000FC12CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3C1EA1B233CD19000FC12CD /* Build configuration list for PBXNativeTarget "bookstandUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3C1EA1C233CD19000FC12CD /* Debug */,
-				E3C1EA1D233CD19000FC12CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
