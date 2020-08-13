@@ -16,7 +16,7 @@ struct BookSearchProvider {
 
     static let shared = BookSearchProvider()
 
-    enum Target: String {
+    enum Target: String, CaseIterable {
         case title
         case isbn
         case publisher

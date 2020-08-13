@@ -18,20 +18,36 @@ struct BookSearchView: View {
             VStack {
                 SearchBar(text: $viewModel.query)
                     .padding()
+
+                Picker(selection: $viewModel.searchTarget, label: Text("Choose Search Type")) {
+                    Text("제목").tag(0)
+                    Text("ISBN").tag(1)
+                    Text("출판사").tag(2)
+                    Text("인명").tag(3)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.horizontal, 10)
+
                 List {
-                    ForEach(viewModel.books, id: \.title) { book in
+                    ForEach(viewModel.books) { book in
                         BookRow(
                             book: book,
                             imageLoader: ImageLoaderCache.shared.loaderFor(path: book.thumbnail)
                         )
+                        .onAppear(perform: {
+                            if viewModel.isLast(book) {
+                                print(book.title)
+                            }
+                        })
                     }
                 }
+                .animation(.spring())
                 .resignKeyboardOnDragGesture()
                 .navigationBarTitle(Text("Search"))
             }
 
             if viewModel.books.isEmpty {
-                Text("Search Any Books 📚")
+                Text("책 검색 📚")
             }
         }
     }
