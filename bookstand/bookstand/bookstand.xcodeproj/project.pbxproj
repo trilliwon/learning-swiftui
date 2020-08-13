@@ -10,9 +10,10 @@
 		E306498D233D9AA6000F5B7C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306498C233D9AA6000F5B7C /* Book.swift */; };
 		E306498F233D9ABA000F5B7C /* NumberFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306498E233D9ABA000F5B7C /* NumberFormatterExtensions.swift */; };
 		E3064991233D9AF7000F5B7C /* DateFormatterExtendions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064990233D9AF7000F5B7C /* DateFormatterExtendions.swift */; };
+		E3301BA524E4F46100D9268E /* BookSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3301BA424E4F46100D9268E /* BookSearchViewModel.swift */; };
 		E384BD1824175BC0008B0D4D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E384BD1724175BC0008B0D4D /* APIService.swift */; };
 		E384BD2324176950008B0D4D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E384BD2224176950008B0D4D /* HTTPMethod.swift */; };
-		E3A69CB424D7C5640000E4E9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A69CB324D7C5640000E4E9 /* SearchView.swift */; };
+		E3A69CB424D7C5640000E4E9 /* BookSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A69CB324D7C5640000E4E9 /* BookSearchView.swift */; };
 		E3A69CB624D7C5A30000E4E9 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A69CB524D7C5A30000E4E9 /* SearchBar.swift */; };
 		E3A69CB824D7D0380000E4E9 /* ResignKeyboardOnDragGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A69CB724D7D0380000E4E9 /* ResignKeyboardOnDragGesture.swift */; };
 		E3A69CBE24D7D2B60000E4E9 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A69CBD24D7D2B60000E4E9 /* Helper.swift */; };
@@ -54,9 +55,10 @@
 		E306498C233D9AA6000F5B7C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		E306498E233D9ABA000F5B7C /* NumberFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterExtensions.swift; sourceTree = "<group>"; };
 		E3064990233D9AF7000F5B7C /* DateFormatterExtendions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtendions.swift; sourceTree = "<group>"; };
+		E3301BA424E4F46100D9268E /* BookSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewModel.swift; sourceTree = "<group>"; };
 		E384BD1724175BC0008B0D4D /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		E384BD2224176950008B0D4D /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		E3A69CB324D7C5640000E4E9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		E3A69CB324D7C5640000E4E9 /* BookSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchView.swift; sourceTree = "<group>"; };
 		E3A69CB524D7C5A30000E4E9 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E3A69CB724D7D0380000E4E9 /* ResignKeyboardOnDragGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGesture.swift; sourceTree = "<group>"; };
 		E3A69CBD24D7D2B60000E4E9 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -190,7 +192,8 @@
 				E3A69CBA24D7D08C0000E4E9 /* Entry */,
 				E3A69CB924D7D0480000E4E9 /* Views */,
 				E3C1E9F2233CD18D00FC12CD /* ContentView.swift */,
-				E3A69CB324D7C5640000E4E9 /* SearchView.swift */,
+				E3A69CB324D7C5640000E4E9 /* BookSearchView.swift */,
+				E3301BA424E4F46100D9268E /* BookSearchViewModel.swift */,
 				E3C1EA22233CD86700FC12CD /* BookRow.swift */,
 				E3064993233D9B3F000F5B7C /* Models */,
 				E3064992233D9B35000F5B7C /* Extensions */,
@@ -377,10 +380,11 @@
 				E306498F233D9ABA000F5B7C /* NumberFormatterExtensions.swift in Sources */,
 				E306498D233D9AA6000F5B7C /* Book.swift in Sources */,
 				E3C1EA1F233CD42500FC12CD /* BookSearchProvider.swift in Sources */,
-				E3A69CB424D7C5640000E4E9 /* SearchView.swift in Sources */,
+				E3A69CB424D7C5640000E4E9 /* BookSearchView.swift in Sources */,
 				E384BD1824175BC0008B0D4D /* APIService.swift in Sources */,
 				E3C1E9EE233CD18D00FC12CD /* SceneDelegate.swift in Sources */,
 				E3F4CAAC233E1F9E00CDD4BA /* DateExtendions.swift in Sources */,
+				E3301BA524E4F46100D9268E /* BookSearchViewModel.swift in Sources */,
 				E3C1EA21233CD62B00FC12CD /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

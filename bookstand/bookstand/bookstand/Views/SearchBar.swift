@@ -10,53 +10,70 @@ import SwiftUI
 
 struct SearchBar: View {
 
-	@Binding var text: String
+    var cancelTitle: String = "Cancel"
+
+    @Binding var text: String
 
     var body: some View {
-		HStack {
-			HStack {
-				Image(systemName: "magnifyingglass")
-					.renderingMode(.template)
-					.foregroundColor(Color(.systemGray))
 
-				TextField("Search ...", text: $text)
-					.onTapGesture {
-						self.isEditing = true
-				}
+        HStack(alignment: .center, spacing: 5) {
+            HStack(alignment: .center, spacing: 5) {
+                Image(systemName: "magnifyingglass")
+                    .renderingMode(.template)
+                    .foregroundColor(Color(.systemGray))
+                    .font(.system(size: 16, weight: .medium))
+                    .padding(.horizontal, 5)
 
-				Button(action: {
-					self.text = ""
-				}) {
-					Image(systemName: "xmark.circle.fill")
-						.renderingMode(.template)
-						.foregroundColor(Color(.systemGray2))
-				}
-			}
-			.padding(7)
-			.padding(.horizontal, 5)
-			.background(Color(.systemGray5))
-			.cornerRadius(8)
-			.padding(.horizontal, 10)
+                TextField("Search ...", text: $text)
+                    .font(.subheadline)
+                    .onTapGesture {
+                        withAnimation {
+                            self.isEditing.toggle()
+                        }
+                    }
 
-			if isEditing {
-				Button(action: {
-					self.isEditing = false
-					self.text = ""
-				}) {
-					Text("Cancel")
-				}
-				.padding(.trailing, 10)
-				.transition(.move(edge: .trailing))
-				.animation(.default)
-			}
-		}
-	}
+                if !text.isEmpty {
+                    Button(action: {
+                        self.text = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .renderingMode(.template)
+                            .foregroundColor(Color(.systemGray2))
+                            .font(.system(size: 16, weight: .medium))
+                    }
+                }
+            }
+            .padding(5)
+            .background(Color(.systemGray5))
+            .cornerRadius(8)
 
-	@State private var isEditing = false
+            if isEditing {
+                Button(action: {
+                    withAnimation {
+                        self.isEditing.toggle()
+                    }
+                    self.text = ""
+                }) {
+                    Text(cancelTitle)
+                        .font(.system(size: 16, weight: .medium))
+                }
+                .transition(.moveOrFade(edge: .trailing))
+                .animation(.easeInOut)
+            }
+        }
+    }
+
+    @State private var isEditing = false
 }
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-		SearchBar(text: .constant(""))
+        SearchBar(text: .constant(""))
+    }
+}
+
+extension AnyTransition {
+    static func moveOrFade(edge: Edge) -> AnyTransition {
+        AnyTransition.move(edge: edge).combined(with: .opacity)
     }
 }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SearchView: View {
+struct BookSearchView: View {
 
 	@State var searchText: String = ""
 
@@ -19,7 +19,8 @@ struct SearchView: View {
 				ForEach(books, id: \.title) { book in
 					BookRow(
 						book: book,
-						imageLoader: ImageLoaderCache.shared.loaderFor(path: book.thumbnail))
+						imageLoader: ImageLoaderCache.shared.loaderFor(path: book.thumbnail)
+                    )
 				}
 			}
 			.navigationBarTitle(Text("Search"))
@@ -29,6 +30,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
 	static var previews: some View {
-		SearchView()
+		BookSearchView()
 	}
 }
