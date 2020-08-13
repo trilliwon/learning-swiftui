@@ -15,10 +15,6 @@ struct BookSearchView: View {
     var body: some View {
         ZStack {
 
-            if viewModel.query.isEmpty {
-                Text("Search Any Books 📚")
-            }
-
             VStack {
                 SearchBar(text: $viewModel.query)
                     .padding()
@@ -32,6 +28,10 @@ struct BookSearchView: View {
                 }
                 .resignKeyboardOnDragGesture()
                 .navigationBarTitle(Text("Search"))
+            }
+
+            if viewModel.query.isEmpty {
+                Text("Search Any Books 📚")
             }
         }
     }
