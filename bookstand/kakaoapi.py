@@ -20,7 +20,8 @@ headers = {'Authorization' : 'KakaoAK 57ee879cb839006ba4c51db31d1b7d99'}
 
 result = requests.get(url = url, params={'query' : '우주'}, headers=headers)
 
+print(result.url)
 with open('books.json', 'w', encoding='utf=8') as outfile:
     json.dump(result.json(), outfile, ensure_ascii=False, indent=4)
 
-print(result.json()['documents'])
+pprint.pprint(result.json())

@@ -11,7 +11,7 @@ import Combine
 
 struct BookSearchProvider {
 
-	let baseURL = URL(string: "https://dapi.kakao.com/v3")!
+	let baseURL = URL(string: "https://dapi.kakao.com/v3/search/book")!
 	let apiKey = "KakaoAK 57ee879cb839006ba4c51db31d1b7d99"
 
 	static let shared = BookSearchProvider()
@@ -36,7 +36,7 @@ struct BookSearchProvider {
 		var path: String {
 			switch self {
 			case .search(let target):
-				return "search/book?target=\(target.rawValue)"
+				return target.rawValue
 			}
 		}
 
@@ -49,19 +49,15 @@ struct BookSearchProvider {
 	}
 
 	func request<Response>(endpoint: Endpoint, params: [String: String]? = nil) -> AnyPublisher<Response, APIError> where Response : Decodable {
-		let queryURL = baseURL.appendingPathComponent(endpoint.path)
-		var components = URLComponents(url: queryURL, resolvingAgainstBaseURL: true)!
-		components.queryItems = [
-			URLQueryItem(name: "Authorization", value: apiKey),
-		]
+		var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)!
+        components.queryItems = [URLQueryItem(name: "target", value: endpoint.path)]
+        components.queryItems?.append(contentsOf: (params ?? [:]).map { URLQueryItem(name: $0, value: $1) })
 
-		for param in (params ?? [:]) {
-			components.queryItems?.append(URLQueryItem(name: param.key, value: param.value))
-		}
-		guard let url = components.url else { fatalError() }
+		guard let url = components.url else { fatalError("components.url == nil") }
 
 		var request = URLRequest(url: url)
 		request.httpMethod = endpoint.method.rawValue
+        request.setValue(apiKey, forHTTPHeaderField: "Authorization")
 		let decorder = JSONDecoder()
 		decorder.keyDecodingStrategy = .convertFromSnakeCase
 

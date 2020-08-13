@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Documents: Codable {
+    var documents: [Book]
+}
+
 struct Book: Codable {
 	let title: String
 	let authors: [String]
@@ -15,7 +19,7 @@ struct Book: Codable {
 	let datetime: String
 	let isbn: String
 	let price: Int
-	let sale_price: Int
+	let sale_price: Int?
 	let thumbnail: String
 	let status: String
 	let translators: [String]
@@ -31,7 +35,8 @@ extension Book {
 
 	var formattedSalePrice: String? {
 		NumberFormatter.priceFormatter.locale = Locale(identifier: "ko_KR")
-		return NumberFormatter.priceFormatter.string(from: NSNumber(value: sale_price))
+        guard let salePrice = sale_price else { return nil }
+		return NumberFormatter.priceFormatter.string(from: NSNumber(value: salePrice))
 	}
 }
 

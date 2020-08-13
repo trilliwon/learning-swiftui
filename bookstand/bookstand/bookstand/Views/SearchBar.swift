@@ -32,15 +32,14 @@ struct SearchBar: View {
                         }
                     }
 
-                if !text.isEmpty {
-                    Button(action: {
-                        self.text = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .renderingMode(.template)
-                            .foregroundColor(Color(.systemGray2))
-                            .font(.system(size: 16, weight: .medium))
-                    }
+                Button(action: {
+                    self.text = ""
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .renderingMode(.template)
+                        .opacity(text.isEmpty ? 0 : 1)
+                        .foregroundColor(Color(.systemGray2))
+                        .font(.system(size: 16, weight: .medium))
                 }
             }
             .padding(5)
@@ -49,6 +48,7 @@ struct SearchBar: View {
 
             if isEditing {
                 Button(action: {
+                    UIApplication.shared.endEditing(true)
                     withAnimation {
                         self.isEditing.toggle()
                     }
