@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct BookCoverImage: View {
+
     @ObservedObject var imageLoader: ImageLoader
     @State var isImageLoaded = false
 
@@ -22,19 +23,20 @@ struct BookCoverImage: View {
                     .animation(.spring())
                     .onAppear{
                         self.isImageLoaded = true
-                }
+                    }
             } else {
                 Rectangle()
                     .foregroundColor(.gray)
             }
-        }.onAppear {
-//            BookSearchAPI.shared.request<Book.self>(endpoint: BookSearchAPI.Endpoint.search(.title))
         }
     }
 }
 
 struct BookCoverImage_Previews: PreviewProvider {
     static var previews: some View {
-        BookCoverImage(imageLoader: ImageLoader(path: "https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F1590611%3Ftimestamp%3D20190131033601"))
+        BookCoverImage(
+            imageLoader:
+                ImageLoader(path: "https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F1590611%3Ftimestamp%3D20190131033601")
+        )
     }
 }
